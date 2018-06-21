@@ -1,0 +1,33 @@
+﻿<Page
+    x:Class="MersenneTwister.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MersenneTwister"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    
+    <StackPanel
+        VerticalAlignment="Center">
+    
+        <TextBlock
+            Text="Please enter the seed value:"
+            HorizontalAlignment="Center"/>
+        
+        <TextBlock
+            Text="(from -2,147,483,648 to 2,147,483,647)"
+            HorizontalAlignment="Center"/>
+
+        <TextBox
+            TextAlignment="Center"/>
+
+        <Button x:ConnectionId='1'
+            Content="Generate 10 millions bytes"
+            HorizontalAlignment="Center"
+                                />
+
+    </StackPanel>
+
+</Page>
+
