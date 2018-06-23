@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
+using Windows.Storage;
+using Windows.Storage.Pickers;
 using Windows.UI.Notifications;
 using Windows.UI.Xaml.Controls;
 
@@ -33,13 +35,18 @@ namespace MersenneTwister
                 if (bytesGenerated % 1000000 == 0)
                 {
                     Debug.WriteLine(bytesGenerated + " bytes generated");
-                    this.ShowToastNotification("MersenneTwister", "The file is ready!");
                 }
             }
 
-            Windows.Storage.StorageFolder storageFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
-            Windows.Storage.StorageFile file = await storageFolder.CreateFileAsync("output", Windows.Storage.CreationCollisionOption.ReplaceExisting);
-            File.WriteAllBytes(file.Path, tenMillionBytes);
+            FileSavePicker picker = new FileSavePicker();
+            picker.FileTypeChoices.Add("Binary file", new List<string> {".bin"});
+            picker.SuggestedFileName = "output";
+            StorageFile file = await picker.PickSaveFileAsync();
+            if (file != null)
+            {
+                await FileIO.WriteBytesAsync(file, tenMillionBytes);
+                this.ShowToastNotification("MersenneTwister", "The file is ready!");
+            }
         }
 
         private void InsertIntegerIntoByteArray(byte[] byteArray, uint integer, uint index)
@@ -63,7 +70,7 @@ namespace MersenneTwister
             audio.SetAttribute("src", "ms-winsoundevent:Notification.SMS");
 
             ToastNotification toast = new ToastNotification(toastXml);
-            toast.ExpirationTime = DateTime.Now.AddSeconds(4);
+            toast.ExpirationTime = DateTime.Now.AddSeconds(3);
             ToastNotifier.Show(toast);
         }
 
