@@ -70,7 +70,7 @@ namespace MersenneTwister
             audio.SetAttribute("src", "ms-winsoundevent:Notification.SMS");
 
             ToastNotification toast = new ToastNotification(toastXml);
-            toast.ExpirationTime = DateTime.Now.AddSeconds(3);
+            toast.ExpirationTime = DateTime.Now.AddSeconds(4);
             ToastNotifier.Show(toast);
         }
 
