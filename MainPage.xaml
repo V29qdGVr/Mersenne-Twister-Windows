@@ -23,7 +23,7 @@
             TextAlignment="Center"/>
 
         <Button
-            Content="GENERATE 10 MILLIONS BYTES"
+            Content="GENERATE 10 MILLION BYTES"
             HorizontalAlignment="Center"
             Click="Button_Click"/>
 

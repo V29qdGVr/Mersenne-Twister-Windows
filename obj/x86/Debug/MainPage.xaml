@@ -23,7 +23,7 @@
             TextAlignment="Center"/>
 
         <Button x:ConnectionId='1'
-            Content="Generate 10 millions bytes"
+            Content="GENERATE 10 MILLION BYTES"
             HorizontalAlignment="Center"
                                 />
 
